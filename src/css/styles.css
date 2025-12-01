@@ -1,11 +1,55 @@
 :root {
   --bs-light-bg : rgb(33, 37, 41); /* noir */
+  --bs-success-bg : rgb(255, 193, 7); /* jaune */
+  --bs-info-bg : rgb(25, 135, 84); /* vert */
+  --bs-primary-bg : rgb(233, 236, 239); /* gris */ 
+  --bs-secondary-bg : rgb(13, 110, 253); /* bleu */
+  --bs-danger-bg : rgb(220, 53, 69); /* rouge */
 }
 
 @font-face {
-  font-family: "Font1942";
-  src: url("../assets/fonts/1942.ttf") format("truetype");
+  font-family: "Cynatar";
+  src: url("../../assets/fonts/Cynatar.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "Yozakura";
+  src: url("../../assets/fonts/YOZAKURA-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tourner";
+  src: url("../../assets/fonts/Tourner.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body { 
+  margin: 0;
+  min-height: 100vh;
+}
+
+.ecran-complet {
+  display: grid;
+  width: 100vw;
+  min-height: 100vh;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.one {
+  background: var(--bs-light-bg);
+  grid-column: 2;
+  grid-row: 1;
 }
