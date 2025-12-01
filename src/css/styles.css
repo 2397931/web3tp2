@@ -1,0 +1,11 @@
+:root {
+  --bs-light-bg : rgb(33, 37, 41); /* noir */
+}
+
+@font-face {
+  font-family: "Font1942";
+  src: url("../assets/fonts/1942.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
