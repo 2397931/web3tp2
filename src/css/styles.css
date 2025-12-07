@@ -7,49 +7,88 @@
   --bs-danger-bg : rgb(220, 53, 69); /* rouge */
 }
 
-@font-face {
-  font-family: "Cynatar";
-  src: url("../../assets/fonts/Cynatar.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Yozakura";
-  src: url("../../assets/fonts/YOZAKURA-Regular.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Tourner";
-  src: url("../../assets/fonts/Tourner.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
 body { 
   margin: 0;
   min-height: 100vh;
 }
 
-.ecran-complet {
+.screen {
   display: grid;
-  width: 100vw;
-  min-height: 100vh;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows:
+      50px   /* row 1 */
+      260px   /* row 2 */
+      250px   /* row 3 */
+      260px   /* row 4 */
+      50px;  /* row 5 */
+
+  height: 100vh;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+
+.row1 { background: var(--bs-success-bg); }
+.row2 { background: var(--bs-info-bg); }
+
+
+.row3 {
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
   gap: 10px;
 }
-.one {
-  background: var(--bs-light-bg);
-  grid-column: 2;
-  grid-row: 1;
+.three { background: var(--bs-info-bg); }
+.four  { background: var(--bs-primary-bg); }
+.five  { background: var(--bs-secondary-bg); }
+
+.row4 {
+  display: grid;
+  grid-template-columns: 20% 20% 40% 20%;
+  gap: 10px;
+  width: 100%;
+}
+
+
+.row4 > * {
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.six   { background: var(--bs-danger-bg); }
+.seven { 
+  font-weight: bold;
+   transform: translate(38%, 28%);
+ }
+
+ .bi-wrench-adjustable-circle {
+  position: relative;
+  font-size: 48px;
+  top: 68%;
+}
+
+.bi-circle {
+  position: absolute;
+  font-size: 220px;
+}
+
+.eight { background: var(--bs-primary-bg); }
+.nine  {
+  position:absolute;
+  top: 78%;
+  left: 135%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  width: 200px;
+  height: 200px;
+}
+
+.row5 {
+  background: var(--bs-info-bg);
 }
