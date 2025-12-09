@@ -4,31 +4,29 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>XG</title>
-<!-- CSS -->
+
+<!-- style sheets -->
 <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="./src/css/styles.css">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.css"/>
 
-<!-- JS -->
+<!-- import maps -->
 <script type="importmap">
-    {
-        "imports": {            
-            "animejs": "./node_modules/animejs/...",
-            "chart.js": "./node_modules/chart.js/...",
-            "chart.js/auto": "./node_modules/chart.js/auto/auto.js",
-            "@kurkle/color": "./node_modules/@kurkle/color/dist/color.esm.js"
-            "maplibre-gl": "https://esm.sh/maplibre-gl@5.13.0"
-            "zzz": "https://esm.sh/zdog"
-        }
+{
+    "imports": {            
+        "animejs": "./node_modules/animejs/lib/anime.es.js",
+        "chart.js": "./node_modules/chart.js/dist/chart.js",
+        "chart.js/auto": "./node_modules/chart.js/auto/auto.js",
+        "@kurkle/color": "./node_modules/@kurkle/color/dist/color.esm.js",
+        "maplibre-gl": "https://esm.sh/maplibre-gl@5.13.0",
+        "zzz": "https://esm.sh/zdog"
     }
+}
 </script>
-<script src="./src/js/animejs.js" type="module"></script>
-<script src="./src/js/chartjs.js" type="module"></script>
 
-<script src="./src/js/bootstrap.js" defer></script>
-<script type="module" src="./src/js/map.js"></script>
-<script type="module" src="./src/js/zdog.js"></script>
+<script src="./src/js/script.js" type="module"></script>
+
 </head>
 <body data-bs-theme="dark">
     <div class="screen">
@@ -37,13 +35,37 @@
         <div class="row row1">informations textuelles</div>
     
         <!-- ROW 2 -->
-        <div class="row row2">animations + images + fx</div>
+        <div class="row row2">
+            <div class="jurin">
+                <img src="./assets/img/jurin.jpg" class="img-fluid" alt="jurinimg">
+            </div>
+            <div class="maya">
+                <img src="./assets/img/maya.jpg" class="img-fluid" alt="mayaimg">
+            </div>
+                <div class="juria">
+                <img src="./assets/img/juria.jpg" class="img-fluid" alt="juriaimg">
+            </div>
+                <div class="hinata">
+                <img src="./assets/img/hinata.jpg" class="img-fluid" alt="hinataimg">
+            </div>
+                <div class="harvey">
+                <img src="./assets/img/harvey.jpg" class="img-fluid" alt="harveyimg">
+            </div>
+                <div class="cocona">
+                <img src="./assets/img/cocona.jpg" class="img-fluid" alt="coconaimg">
+            </div>
+                <div class="chisa">
+                <img src="./assets/img/chisa.jpg" class="img-fluid" alt="chisaimg">
+            </div>
+        </div>
     
         <!-- ROW 3 (3 columns) -->
         <div class="row row3">
             <div class="three">compteurs</div>
             <div class="four">wireFrame</div>
-            <div class="five">Carte</div>
+            <div class="five">
+                <div id="carte"></div>
+            </div>
         </div>
     
         <!-- ROW 4 (4 columns) -->
