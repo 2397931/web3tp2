@@ -119,7 +119,7 @@ new Chart(document.querySelector("#a").getContext("2d"), {
   }
 });
 
-// --- Random hover images ---
+// --- Random Image Hover ---
 const images = document.querySelectorAll('.row2 img');
 const hoverClasses = ['hover1', 'hover2', 'hover3'];
 images.forEach(img => {
@@ -127,7 +127,7 @@ images.forEach(img => {
   img.classList.add(randomClass);
 });
 
-// ---  changement de couleur ---
+// ---  Changement de couleur ---
 document.addEventListener("DOMContentLoaded", () => {
   const radar = document.querySelector(".row4 .nine svg");
   const colors = ["rgb(253, 202, 64)","rgba(223, 41, 53, 1)","rgba(117, 244, 244, 1)"];
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// --- Icon flicker ---
+// --- icônes flicker ---
 const icons = document.querySelectorAll(".icon-animate-1, .icon-animate-2");
 function flickerIcon(icon) {
   icon.style.opacity = 0.2 + Math.random() * 0.8;
