@@ -39,8 +39,8 @@ carte.on("style.load", () => {
           ["linear"],
           ["get", "render_height"],
           0, "#000",
-          200, "#999",
-          400, "#f00"
+          200, "rgba(117, 244, 244, 1)",
+          400, "rgba(223, 41, 53, 1)"
         ],
         "fill-extrusion-height": [
           "interpolate",
@@ -68,31 +68,15 @@ function rotateCamera(timestamp) {
 }
 rotateCamera(0);
 
+// --- Chart.js ---
 new Chart(document.querySelector("#a").getContext("2d"), {
   type: "line",
   data: {
-    labels: [
-      "Sep 16",
-      "Sep 17",
-      "Sep 18",
-      "Sep 19",
-      "Sep 20",
-      "Sep 21",
-      "Sep 22",
-      "Sep 23"
-    ],
+    labels: ["Sep 16","Sep 17","Sep 18","Sep 19","Sep 20","Sep 21","Sep 22","Sep 23"],
     datasets: [
       {
         label: "auditeurs mensuels",
-        data: [
-          2263464,
-          2264767,
-          2266051,
-          2267616,
-          2270403,
-          2275246,
-          2277319
-        ],
+        data: [2263464,2264767,2266051,2267616,2270403,2275246,2277319],
         borderColor: "white",
         borderWidth: 3,
         pointRadius: 0,
@@ -100,15 +84,7 @@ new Chart(document.querySelector("#a").getContext("2d"), {
       },
       {
         label: "Abonnés mensuels",
-        data: [
-          4500305,
-          4487443,
-          4470565,
-          4455315,
-          4461137,
-          4685071,
-          4765536
-        ],
+        data: [4500305,4487443,4470565,4455315,4461137,4685071,4765536],
         borderColor: "rgba(253, 202, 64, 1)",
         borderWidth: 3,
         pointRadius: 0,
@@ -116,43 +92,64 @@ new Chart(document.querySelector("#a").getContext("2d"), {
       }
     ]
   },
-
   options: {
     responsive: true,
     maintainAspectRatio: false,
-
     plugins: {
       title: {
         display: true,
-        text: "Périodes astronomiques des planètes",
-        font: {
-          family: "Arial",
-          size: 16,
-          weight: "700"
-        },
+        text: "Auditeurs et abonnés mensuels du groupe XG sur Spotify",
+        font: { family: "Cynatar", size: 30, weight: "700", color: "rgb(253, 202, 64)" },
         padding: { top: 15, bottom: 10 }
       }
     },
-
     scales: {
       y: {
         type: "logarithmic",
         min: 2000000,
         max: 5000000,
-        title: {
-          display: true,
-          text: "Valeur (log)"
-        },
-        grid: {
-          color: "rgba(222, 222, 222, 0.1)"
-        }
+        title: { display: true, text: "Valeur" },
+        grid: { color: "rgba(222, 222, 222, 0.1)" }
       },
-
       x: {
         title: { display: true, text: "Dates" },
-        grid: { color: "rgba(222,222,222,0.1)" }
+        grid: { color: "rgba(223, 41, 53, 0.1)" }
       }
     }
   }
 });
 
+// --- Random hover images ---
+const images = document.querySelectorAll('.row2 img');
+const hoverClasses = ['hover1', 'hover2', 'hover3'];
+images.forEach(img => {
+  const randomClass = hoverClasses[Math.floor(Math.random() * hoverClasses.length)];
+  img.classList.add(randomClass);
+});
+
+// ---  changement de couleur ---
+document.addEventListener("DOMContentLoaded", () => {
+  const radar = document.querySelector(".row4 .nine svg");
+  const colors = ["rgb(253, 202, 64)","rgba(223, 41, 53, 1)","rgba(117, 244, 244, 1)"];
+  let current = 0;
+  radar.addEventListener("click", () => {
+    current = (current + 1) % colors.length;
+    radar.querySelectorAll("circle, path").forEach(el => el.setAttribute("fill", colors[current]));
+  });
+});
+
+// --- Icon flicker ---
+const icons = document.querySelectorAll(".icon-animate-1, .icon-animate-2");
+function flickerIcon(icon) {
+  icon.style.opacity = 0.2 + Math.random() * 0.8;
+}
+function animateFlicker() {
+  icons.forEach(flickerIcon);
+  requestAnimationFrame(animateFlicker);
+}
+animateFlicker();
+
+// --- Page fade-in ---
+window.addEventListener("load", () => {
+  document.body.style.opacity = "1";
+});

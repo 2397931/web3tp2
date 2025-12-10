@@ -1,63 +1,61 @@
 :root {
-  --bs-light-bg : rgb(33, 37, 41); /* noir */
-  --bs-success-bg : rgb(255, 193, 7); /* jaune */
-  --bs-info-bg : rgb(25, 135, 84); /* vert */
-  --bs-primary-bg : rgb(233, 236, 239); /* gris */ 
-  --bs-secondary-bg : rgb(13, 110, 253); /* bleu */
-  --bs-danger-bg : rgb(220, 53, 69); /* rouge */
+  --bs-light-bg: rgb(33, 37, 41);
+  --bs-success-bg: rgb(255, 193, 7);
+  --bs-info-bg: rgb(25, 135, 84);
+  --bs-primary-bg: rgb(233, 236, 239);
+  --bs-secondary-bg: rgb(13, 110, 253);
+  --bs-danger-bg: rgb(220, 53, 69);
 }
 
 @font-face {
- font-family: "Cynatar";
- src: url("../../assets/fonts/Cynatar.otf") format("opentype");
- font-weight: normal;
- font-style: normal;
- font-display: swap;
+  font-family: "Cynatar";
+  src: url("../../assets/fonts/Cynatar.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
- font-family: "Yozakura";
- src: url("../../assets/fonts/YOZAKURA-Regular.otf") format("opentype");
- font-weight: normal;
- font-style: normal;
- font-display: swap;
+  font-family: "Yozakura";
+  src: url("../../assets/fonts/YOZAKURA-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
- font-family: "Tourner";
- src: url("../../assets/fonts/Tourner.ttf") format("truetype");
- font-weight: normal;
- font-style: normal;
- font-display: swap;
+  font-family: "Tourner";
+  src: url("../../assets/fonts/Tourner.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 body { 
   margin: 0;
   min-height: 100vh;
   overflow: hidden;
+  background-image: radial-gradient(circle at center, rgba(117, 244, 244, 0.2), rgb(0, 0, 0));
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 }
 
 #carte {
   width: 100%;
   height: 100%;
-  min-height: 250px;  
+  min-height: 250px;
   border-radius: 1rem;
   transform: translateX(-20px);
 }
 
 .screen {
   display: grid;
-  grid-template-rows:
-      50px   /* row 1 */
-      260px   /* row 2 */
-      250px   /* row 3 */
-      260px   /* row 4 */
-      50px;  /* row 5 */
-
+  grid-template-rows: 50px 260px 250px 260px 50px;
   height: 100vh;
   gap: 10px;
   padding: 10px;
   box-sizing: border-box;
 }
-
 
 .row1 { background: var(--bs-success-bg); }
 
@@ -66,18 +64,20 @@ body {
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   height: 260px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .row2 img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-
+.hover1:hover { transform: scale(1.1) rotate(2deg); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+.hover2:hover { transform: scale(0.95) rotate(-2deg); box-shadow: 0 5px 10px rgba(0,0,0,0.2); }
+.hover3:hover { transform: scale(1.15) rotate(8deg); box-shadow: 0 15px 30px rgba(0,0,0,0.35); }
 
 .row3 {
   display: grid;
@@ -85,8 +85,29 @@ body {
   gap: 10px;
   height: 250px;
 }
-.three { background: var(--bs-info-bg); }
-.four  { background: var(--bs-primary-bg); }
+
+.three { 
+  min-width: 0;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+
+.four {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 100%;
+  height: 100%;
+  font-family: "Cynatar", sans-serif;
+  font-size: 50px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
 .five {
   overflow: hidden;
   position: relative;
@@ -101,7 +122,6 @@ body {
   width: 100%;
 }
 
-
 .row4 > * {
   min-width: 0;
   margin: 0;
@@ -110,15 +130,15 @@ body {
   overflow: hidden;
 }
 
-.six   { background: var(--bs-danger-bg); }
-.seven { 
+.seven {
   font-weight: bold;
   transform: translate(20%, -5%);
   width: 100%;
   height: 100%;
- }
+  overflow: visible;
+}
 
- .bi-wrench-adjustable-circle {
+.bi-wrench-adjustable-circle {
   position: relative;
   font-size: 48px;
   top: 43%;
@@ -129,6 +149,47 @@ body {
   position: absolute;
   font-size: 220px;
   top: -10%;
+  color: rgba(223, 41, 53, 1);
+}
+
+.icon-animate-1 {
+  display: inline-block;
+  animation: rotateScale1 6s linear infinite;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.icon-animate-1:hover {
+  animation-play-state: paused;
+  transform: scale(1) rotate(0deg);
+}
+
+@keyframes rotateScale1 {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(90deg) scale(1.05); }
+  50%  { transform: rotate(180deg) scale(1.1); }
+  75%  { transform: rotate(270deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.icon-animate-2 {
+  display: inline-block;
+  animation: rotateScale2 4s linear infinite;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.icon-animate-2:hover {
+  animation-play-state: paused;
+  transform: scale(1) rotate(0deg);
+}
+
+@keyframes rotateScale2 {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(-90deg) scale(1.1); }
+  50%  { transform: rotate(-180deg) scale(1.05); }
+  75%  { transform: rotate(-270deg) scale(1.1); }
+  100% { transform: rotate(-360deg) scale(1); }
 }
 
 .eight {
@@ -143,9 +204,7 @@ body {
   display: block;
 }
 
-
-
-.nine  {
+.nine {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,6 +216,58 @@ svg {
   height: 200px;
 }
 
-.row5 {
-  background: var(--bs-info-bg);
+.row5 { background: rgba(117, 244, 244, 1); }
+
+.scroller {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 0;
+  position: fixed;
+  z-index: 999;
+}
+
+.scroller-top {
+  top: 10px;
+  font-family: "Tourner";
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.scroller-bottom {
+  bottom: 10px;
+  font-family: "Tourner";
+  font-size: 3rem;
+  font-weight: 200;
+}
+
+.inner {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 12s linear infinite;
+}
+
+.inner span {
+  padding: 0 40px;
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.zdog-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: move;
+  filter: drop-shadow(0 0 25px rgba(117, 244, 244, 0.8));
+}
+
+#typedjs-elem {
+  font-family: "Yozakura", sans-serif;
+  font-size: 2rem;
+  color: rgb(253, 202, 64);
+  text-align: center;
 }
